@@ -1,0 +1,11 @@
+{% extends 'contacts/base.html' %}
+{% block content %}
+    {% for contact in contacts %}
+        <div class="post">
+            <div class="date">
+            </div>
+            <h2><a href="{% url 'contact_detail' pk=contact.pk %}">{{ contact.first_name }} {{contact.last_name}}</a></h2>
+            <p>{{ contact.phone_number|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
