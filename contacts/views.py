@@ -1,12 +1,14 @@
+#These views connect the templates to the model. Displays objects in model and adds new objects to model
+
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Contact
 from .forms import PostForm
 
 # takes request and will return the value it gets from calling another function render that will render (put together)
 # the contact list template
-def post_list(request):
-    contacts = Contact.objects.order_by('first_name')
-    return render(request, 'contacts/contact_list.html', {'contacts': contacts})
+def post_list(request): # Request takes information recieved from the user via internet.
+    contacts = Contact.objects.order_by('first_name') # Order objects by their first_name field
+    return render(request, 'contacts/contact_list.html', {'contacts': contacts}) #Template uses objects named contacts
 
 
 def contact_detail(request, pk):
