@@ -17,13 +17,13 @@ def contact_detail(request, pk): # Catches pk integer
 
 
 def create_new(request):
-    if request.method == "POST":
+    if request.method == "POST": # If method is POST then construct the PostForm with data from the form
         form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
+        if form.is_valid(): # Check that the form is correct, if so save it.
+            post = form.save(commit=False) # commit=False means that we don't want to save the Post model yet, missed field
             post.author = request.user
             post.save()
-            return redirect('contact_detail', pk=post.pk)
+            return redirect('contact_detail', pk=post.pk) # Redirect to new contact created, use pk to retrieve contact
     else:
         form = PostForm()
     return render(request, 'contacts/contact_edit.html', {'form': form})
