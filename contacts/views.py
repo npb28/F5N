@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Contact
 from .forms import PostForm
 
-
+# takes request and will return the value it gets from calling another function render that will render (put together)
+# the contact list template
 def post_list(request):
     contacts = Contact.objects.order_by('first_name')
     return render(request, 'contacts/contact_list.html', {'contacts': contacts})
