@@ -11,9 +11,9 @@ def post_list(request): # Request takes information recieved from the user via i
     return render(request, 'contacts/contact_list.html', {'contacts': contacts}) #Template uses objects named contacts
 
 
-def contact_detail(request, pk):
-    contact = get_object_or_404(Contact, pk=pk)
-    return render(request, 'contacts/contact_detail.html', {'contact': contact})
+def contact_detail(request, pk): # Catches pk integer 
+    contact = get_object_or_404(Contact, pk=pk) # Request for one object or returns error if object not valid in model
+    return render(request, 'contacts/contact_detail.html', {'contact': contact}) # Displays object's fields with detail template
 
 
 def create_new(request):
